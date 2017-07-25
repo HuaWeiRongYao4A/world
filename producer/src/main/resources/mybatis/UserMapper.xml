@@ -13,6 +13,28 @@
         <result column="is_active" property="isActive" jdbcType="DECIMAL" />
     </resultMap>
 
+    <sql id="Base_Column_List">
+        <![CDATA[ id, create_time, update_time, username, password, email, active_code, is_active ]]>
+    </sql>
+
+    <sql id="UserFindParam">
+        <where>
+            <if test="id != null and id != ''">
+                AND id = #{id}
+            </if>
+            <if test="username != null and username != ''">
+                AND username = #{username}
+            </if>
+            <if test="email != null and email != ''">
+                AND email = #{email}
+            </if>
+            <if test="activeCode != null and activeCode != ''">
+                AND active_code = #{activeCode}
+            </if>
+        </where>
+    </sql>
+
+
     <insert id="insert" parameterType="com.world.producer.entity.User">
         INSERT INTO user_info (
         username,
@@ -32,5 +54,20 @@
         #{isActive, jdbcType=DECIMAL}
         )
     </insert>
+
+    <select id="checkUserRegister" parameterType="com.world.producer.entity.User" resultType="int">
+        SELECT count(*) FROM user_info WHERE username = #{username}
+    </select>
+
+    <update id="active">
+        UPDATE user_info SET is_active = #{isActive} WHERE active_code = #{activeCode}
+    </update>
+
+    <select id="detail" parameterType="com.world.producer.entity.User" resultMap="baseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM user_info
+        <include refid="UserFindParam" />
+    </select>
 
 </mapper>

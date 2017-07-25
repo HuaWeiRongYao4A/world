@@ -2,10 +2,7 @@ package com.world.consumer.controller;
 
 import com.world.consumer.remote.UserRemote;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Description : 用户远程调用Controller
@@ -21,5 +18,10 @@ public class UserConsumerController {
     @PostMapping("register")
     public String register(@RequestParam String username, @RequestParam String password) {
         return userRemote.register(username, password);
+    }
+
+    @GetMapping("active")
+    public String active(@RequestParam String activeCode) {
+        return userRemote.active(activeCode);
     }
 }

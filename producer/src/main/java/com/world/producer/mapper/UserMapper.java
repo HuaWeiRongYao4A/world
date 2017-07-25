@@ -10,4 +10,9 @@ public interface UserMapper {
 
     int insert(User user);
 
+    int checkUserRegister(User user);
+
+    int active(User user);
+
+    User detail(User user);
 }

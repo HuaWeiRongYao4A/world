@@ -18,7 +18,7 @@ public class User implements Serializable {
     private Date updateTime;
     private String email;
     private String activeCode;
-    private int isActive;
+    private byte isActive;
 
     public User() {}
 
@@ -104,11 +104,11 @@ public class User implements Serializable {
         this.activeCode = activeCode;
     }
 
-    public int getIsActive() {
+    public byte getIsActive() {
         return isActive;
     }
 
-    public void setSerialVersionUID(int isActive) {
+    public void setIsActive(byte isActive) {
         this.isActive = isActive;
     }
 }
