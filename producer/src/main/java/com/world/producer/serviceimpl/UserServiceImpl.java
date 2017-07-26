@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
         User user = new User(username, password, username, activeCode, (byte) 0);
         userMapper.insert(user);
         //进入队列
-        rabbitTemplate.convertAndSend("topic.user.register.email.exchange", "topic.user.register.email.key", user);
+        rabbitTemplate.convertAndSend("emailExchange", "topic.user.register.email.key", user);
         return 1;
     }
 

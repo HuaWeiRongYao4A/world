@@ -17,7 +17,7 @@ import javax.mail.internet.MimeMessage;
  * Created by Administrator on 2017/7/9.
  */
 @Configuration
-@RabbitListener(queues = "topic.user.register.email.queue")
+@RabbitListener(queues = "email")
 public class RabbitmqEmailReceive {
 
     @Autowired
@@ -34,8 +34,8 @@ public class RabbitmqEmailReceive {
             helper.setFrom(from);
             helper.setTo(user.getEmail());
             helper.setSubject("world");
-            String text = "<h1>此邮件为官方激活邮件！请点击下面链接完成激活操作！</h1><h3><a href='http://localhost:8030/web/user/active?activeCode="+
-                    user.getActiveCode() +"'>http://localhost:8030/web/user/active</a></h3>";
+            String text = "<h1>此邮件为官方激活邮件！请点击下面链接完成激活操作！</h1><h3><a href='http://106.14.188.62:8030/web/user/active?activeCode="+
+                    user.getActiveCode() +"'>http://106.14.188.62:8030/web/user/active</a></h3>";
             helper.setText(text, true);
             javaMailSender.send(message);
         } catch (MessagingException e) {

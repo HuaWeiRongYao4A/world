@@ -14,12 +14,12 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitmqEmailConfig {
     @Bean
     public Queue queue() {
-        return new Queue("topic.user.register.email.queue", true);
+        return new Queue("email", true);
     }
 
     @Bean
     public TopicExchange TopicExchange() {
-        return new TopicExchange("topic.user.register.email.exchange");
+        return new TopicExchange("emailExchange");
     }
 
     @Bean
