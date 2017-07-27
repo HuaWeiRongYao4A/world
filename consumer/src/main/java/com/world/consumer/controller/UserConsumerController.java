@@ -1,6 +1,7 @@
 package com.world.consumer.controller;
 
 import com.world.consumer.remote.UserRemote;
+import com.world.consumer.viewobject.UserLoginVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,4 +25,10 @@ public class UserConsumerController {
     public String active(@RequestParam String activeCode) {
         return userRemote.active(activeCode);
     }
+
+    @PostMapping("login")
+    public UserLoginVO login(@RequestParam String username, @RequestParam String password) {
+        return userRemote.login(username, password);
+    }
+
 }

@@ -2,8 +2,13 @@ package com.world.producer.controller;
 
 import com.world.producer.entity.User;
 import com.world.producer.service.UserService;
+import com.world.producer.util.JavaWebTokenUtil;
+import com.world.producer.viewobject.UserLoginVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author : lkz
@@ -37,4 +42,30 @@ public class UserController {
         userService.active(user);
         return "success";
     }
+
+    @PostMapping("login")
+    public UserLoginVO login(@RequestParam String username, @RequestParam String password) {
+        User user = userService.detail(new User(username, password));
+        UserLoginVO userLoginVO = new UserLoginVO();
+        if (user == null) {
+            userLoginVO.setCode("-1");
+            userLoginVO.setMsg("用户名或密码错误");
+            return userLoginVO;
+        }
+        if (user.getIsActive() != 1) {
+            userLoginVO.setCode("-1");
+            userLoginVO.setMsg("用户暂未激活，请先通过邮箱激活！");
+            return userLoginVO;
+        }
+        //把用户登录信息放进token
+        Map<String, Object> loginInfo = new HashMap<>();
+        loginInfo.put("id", user.getId());
+        String token = JavaWebTokenUtil.createJavaWebToken(loginInfo);
+        System.out.println("token: " + token);
+        userLoginVO.setToken(token);
+        userLoginVO.setUsername(user.getUsername());
+        userLoginVO.setCode("1");
+        return userLoginVO;
+    }
 }
+
