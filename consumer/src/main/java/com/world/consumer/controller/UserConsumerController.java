@@ -1,9 +1,12 @@
 package com.world.consumer.controller;
 
 import com.world.consumer.remote.UserRemote;
+import com.world.consumer.util.AuthUtil;
 import com.world.consumer.viewobject.UserLoginVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @Description : 用户远程调用Controller
@@ -31,4 +34,14 @@ public class UserConsumerController {
         return userRemote.login(username, password);
     }
 
+    @PostMapping("logout")
+    public String logout(HttpServletRequest request) {
+        try {
+            Long id = AuthUtil.getUserId(request);
+            if (id > 0) return "success";
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
+        return "error";
+    }
 }

@@ -19,4 +19,5 @@ public interface UserRemote {
 
     @PostMapping(value = "web/user/login")
     UserLoginVO login(@RequestParam("username") String username, @RequestParam("password") String password);
+
 }
