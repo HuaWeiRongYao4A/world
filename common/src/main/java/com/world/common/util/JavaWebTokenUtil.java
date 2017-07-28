@@ -1,4 +1,4 @@
-package com.world.consumer.util;
+package com.world.common.util;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

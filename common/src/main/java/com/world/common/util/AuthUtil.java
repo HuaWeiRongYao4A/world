@@ -1,4 +1,4 @@
-package com.world.consumer.util;
+package com.world.common.util;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;

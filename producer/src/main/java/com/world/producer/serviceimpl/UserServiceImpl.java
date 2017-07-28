@@ -1,7 +1,7 @@
 package com.world.producer.serviceimpl;
 
 
-import com.world.producer.entity.User;
+import com.world.common.entity.User;
 import com.world.producer.mapper.UserMapper;
 import com.world.producer.service.UserService;
 import org.springframework.amqp.core.AmqpTemplate;

@@ -1,4 +1,4 @@
-package com.world.producer.entity;
+package com.world.common.entity;
 
 import java.io.Serializable;
 import java.util.Date;

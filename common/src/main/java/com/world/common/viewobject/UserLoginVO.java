@@ -1,4 +1,4 @@
-package com.world.consumer.viewobject;
+package com.world.common.viewobject;
 
 /**
  * Created by Administrator on 2017/7/21.

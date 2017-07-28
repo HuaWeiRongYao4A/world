@@ -1,4 +1,4 @@
-package com.world.consumer.util;
+package com.world.consumer.filter;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;

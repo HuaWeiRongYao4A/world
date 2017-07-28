@@ -1,7 +1,7 @@
 package com.world.producer.rabbitmq;
 
 
-import com.world.producer.entity.User;
+import com.world.common.entity.User;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +34,8 @@ public class RabbitmqEmailReceive {
             helper.setFrom(from);
             helper.setTo(user.getEmail());
             helper.setSubject("world");
-            String text = "<h1>此邮件为官方激活邮件！请点击下面链接完成激活操作！</h1><h3><a href='http://106.14.188.62:8030/web/user/active?activeCode="+
-                    user.getActiveCode() +"'>http://106.14.188.62:8030/web/user/active</a></h3>";
+            String text = "<h1>此邮件为官方激活邮件！请点击下面链接完成激活操作！</h1><h3><a href='http://www.lankezhou.com/web/user/active?activeCode="+
+                    user.getActiveCode() +"'>http://www.lankezhou.com/web/user/active</a></h3>";
             helper.setText(text, true);
             javaMailSender.send(message);
         } catch (MessagingException e) {

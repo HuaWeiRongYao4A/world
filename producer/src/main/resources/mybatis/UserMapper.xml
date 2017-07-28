@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.world.producer.mapper.UserMapper">
 
-    <resultMap id="baseResultMap" type="com.world.producer.entity.User">
+    <resultMap id="baseResultMap" type="com.world.common.entity.User">
         <id column="id" property="id" jdbcType="DECIMAL" />
         <result column="username" property="username" jdbcType="VARCHAR" />
         <result column="password" property="password" jdbcType="VARCHAR" />
@@ -35,7 +35,7 @@
     </sql>
 
 
-    <insert id="insert" parameterType="com.world.producer.entity.User">
+    <insert id="insert" parameterType="com.world.common.entity.User">
         INSERT INTO user_info (
         username,
         password,
@@ -55,7 +55,7 @@
         )
     </insert>
 
-    <select id="checkUserRegister" parameterType="com.world.producer.entity.User" resultType="int">
+    <select id="checkUserRegister" parameterType="com.world.common.entity.User" resultType="int">
         SELECT count(*) FROM user_info WHERE username = #{username}
     </select>
 
@@ -63,7 +63,7 @@
         UPDATE user_info SET is_active = #{isActive} WHERE active_code = #{activeCode}
     </update>
 
-    <select id="detail" parameterType="com.world.producer.entity.User" resultMap="baseResultMap">
+    <select id="detail" parameterType="com.world.common.entity.User" resultMap="baseResultMap">
         SELECT
         <include refid="Base_Column_List" />
         FROM user_info

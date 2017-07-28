@@ -1,9 +1,9 @@
 package com.world.producer.controller;
 
-import com.world.producer.entity.User;
+import com.world.common.entity.User;
 import com.world.producer.service.UserService;
-import com.world.producer.util.JavaWebTokenUtil;
-import com.world.producer.viewobject.UserLoginVO;
+import com.world.common.util.JavaWebTokenUtil;
+import com.world.common.viewobject.UserLoginVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

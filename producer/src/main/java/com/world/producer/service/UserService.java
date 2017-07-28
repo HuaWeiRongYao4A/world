@@ -1,7 +1,7 @@
 package com.world.producer.service;
 
 
-import com.world.producer.entity.User;
+import com.world.common.entity.User;
 
 /**
  * Created by Administrator on 2017/6/20.
